@@ -1,15 +1,19 @@
-prod:
-  build: .
-  volumes:
-    - .:/usr/src/app
-  ports:
-    - "49160:3000"
-  command: npm run build:docker:prod
+version: '3.0'
+services:
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "49160:3000"
+    command: npm run build:docker:prod
 
-dev:
-  build: .
-  volumes:
-    - .:/usr/src/app
-  ports:
-    - "49160:3000"
-  command: npm run build:docker:dev
+  dev:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "49160:3000"
+    command: npm run build:docker:dev
